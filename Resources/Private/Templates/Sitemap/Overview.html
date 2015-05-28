@@ -1,0 +1,9 @@
+<f:layout name="Xml" />
+
+<f:section name="main">
+	<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+		<f:for each="{nodes}" as="node">
+			<f:render partial="Sitemap/Sitemap" arguments="{node:node}" />
+		</f:for>
+	</sitemapindex>
+</f:section>

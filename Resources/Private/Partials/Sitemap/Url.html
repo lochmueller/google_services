@@ -1,0 +1,28 @@
+<url>
+	<loc>{node.loc}</loc>
+	<f:if condition="{node.lastmod} > 0">
+		<lastmod><f:format.date format="Y-m-d">@{node.lastmod}</f:format.date></lastmod>
+	</f:if>
+	<f:if condition="{node.priority} >= 0.0">
+		<priority><f:format.number decimals="1" decimalSeparator=".">{node.priority}</f:format.number></priority>
+	</f:if>
+	<f:if condition="{node.changefreq}">
+		<changefreq>{node.changefreq}</changefreq>
+	</f:if>
+
+	<f:for each="{node.images}" as="i">
+		<f:render partial="Sitemap/Content/Image" arguments="{image:i}" />
+	</f:for>
+
+	<f:if condition="{node.video}">
+		<f:render partial="Sitemap/Content/Video" arguments="{video:node.video}" />
+	</f:if>
+
+	<f:if condition="{node.geo}">
+		<f:render partial="Sitemap/Content/Geo" arguments="{geo:node.geo}" />
+	</f:if>
+
+	<f:if condition="{node.news}">
+		<f:render partial="Sitemap/Content/News" arguments="{news:node.news}" />
+	</f:if>
+</url>

@@ -1,0 +1,89 @@
+plugin.tx_googleservices {
+
+	view {
+		templateRootPath = {$plugin.googleservices.view.templateRootPath}
+		partialRootPath = {$plugin.googleservices.view.partialRootPath}
+		layoutRootPath = {$plugin.googleservices.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.googleservices.persistence.storagePid}
+
+		classes {
+		
+			Tx_GoogleServices_Domain_Model_Page {
+				mapping {
+					tableName = pages
+					columns {
+						title.mapOnProperty = title
+					}
+				}
+			}
+		
+			Tx_GoogleServices_Domain_Model_News {
+				mapping {
+					tableName = tt_news
+					columns {
+						title.mapOnProperty = title
+					}
+				}
+			}
+		
+			Tx_GoogleServices_Domain_Model_Content {
+				mapping {
+					tableName = tt_content
+					columns {
+						title.mapOnProperty = title
+					}
+				}
+			}
+
+		}
+	} 
+}
+
+
+/**
+ * Google Verify Code
+ */
+[globalVar = LIT:1 = {$plugin.googleservices.settings.enableVerifyCode}]
+	page.headerData.23498762 = TEXT
+	page.headerData.23498762.value = <meta name="google-site-verification" content="{$plugin.googleservices.settings.verifyCode}" />
+[global]
+
+
+/**
+ * Google Analytics Code
+ */
+[globalVar = LIT:1 = {$plugin.googleservices.settings.enableAnalyticsCode}]
+	page.347985827 = COA
+	page.347985827.10 = TEXT
+	page.347985827.10.value (
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{$plugin.googleservices.settings.analyticsCode}']);
+
+)
+
+	page.347985827.100 = TEXT
+	page.347985827.100.value (
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+)
+[global]
+
+
+[globalVar = LIT:1 = {$plugin.googleservices.settings.enableAnalyticsCode}]&&[globalVar = LIT:1 = {$plugin.googleservices.settings.analyticsAnonymizeIp}]
+	page.347985827.30 = TEXT
+	page.347985827.30.value (
+  _gaq.push(['_gat._anonymizeIp']);
+
+)
+[global]
+
+
+

@@ -1,0 +1,13 @@
+<f:layout name="Xml" />
+
+<f:section name="main">
+	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+			xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+			xmlns:video="http://www.sitemaps.org/schemas/sitemap-video/1.1"
+			xmlns:geo="http://www.google.com/geo/schemas/sitemap/1.0"
+			xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+		<f:for each="{nodes}" as="node">
+			<f:render partial="Sitemap/Url" arguments="{node:node}" />
+		</f:for>
+	</urlset>
+</f:section>

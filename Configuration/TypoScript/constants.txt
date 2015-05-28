@@ -1,0 +1,32 @@
+plugin.googleservices {
+
+	settings {
+		# cat=plugin.googleservices/enable; type=boolean; label=Enable Google Verify
+		enableVerifyCode = 0
+		
+		# cat=plugin.googleservices/enable; type=boolean; label=Enable Analytics
+		enableAnalyticsCode = 0
+
+		# cat=plugin.googleservices/other; type=string; label=Google Verify Code: the Google Verifycode for your site
+		verifyCode =
+
+		# cat=plugin.googleservices/other; type=string; label=Google Analytics Code: The Accoount Number of Google Analytics. e.g. UA-20...96-13
+		analyticsCode =
+
+		# cat=plugin.googleservices/other; type=boolean; label=Google Analytics AnonymizeIp: Enable the anonymizeIp feature for e.g. the germane privacy law
+		analyticsAnonymizeIp = 0
+	}
+
+	view {
+		# cat=plugin.googleservices/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:google_services/Resources/Private/Templates/
+		# cat=plugin.googleservices/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:google_services/Resources/Private/Partials/
+		# cat=plugin.googleservices/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:google_services/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.googleservices/other; type=int+; label=Default storage PID
+		storagePid = 
+	}
+}

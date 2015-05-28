@@ -1,0 +1,39 @@
+--- Inhalte prüfen, welche auf der Seite liegen um die lastmod Time zu ermitteln
+--- Icon für die Provider?!!?
+
+- Map ViewHelper optimieren (t3m)
+- Content, Pages & News Repository
+- Content, Pages und News Modelle + Configuration
+
+- Search Service
+- Chart Service
+- Chart ViewHelpers
+
+
+- NewsNodes http://www.google.com/schemas/sitemap-news/0.9/sitemap-news.xsd
+---- http://www.google.com/support/news_pub/bin/answer.py?hl=de&answer=74288
+---- http://www.google.com/support/webmasters/bin/answer.py?hl=de&answer=183668
+
+
+
+#http://www.google.com/support/webmasters/bin/topic.py?topic=8476
+#Video:
+#http://www.google.com/support/webmasters/bin/answer.py?hl=de&answer=80472
+
+
+
+// Vielleicht via:
+http://code.google.com/p/gchartphp/wiki/Examples + Wrapper
+
+
+
+- Video Player:
+http://code.google.com/apis/youtube/youtube_player_demo.html?playerType=embedded&playerVersion=as3
+
+- Google Plus Button
+- http://typo3.org/extensions/repository/view/google_jsapi/current/info/class.google_jsapi_singleton.php/
+
+
+- Dokumentation
+
+- URL Shortener
