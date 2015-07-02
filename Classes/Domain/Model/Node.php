@@ -33,6 +33,17 @@
 class Tx_GoogleServices_Domain_Model_Node extends Tx_GoogleServices_Domain_Model_AbstractModel {
 
 	/**
+	 * Constants for usage in setChangefreq()
+	 */
+	const CHANGE_FREQ_AWLAYS = 'always';
+	const CHANGE_FREQ_HOURLY = 'hourly';
+	const CHANGE_FREQ_DAILY = 'daily';
+	const CHANGE_FREQ_WEEKLY = 'weekly';
+	const CHNAGE_FREQ_MONTHLY = 'monthly';
+	const CHANGE_FREQ_YEARLY = 'yearly';
+	const CHANGE_FREQ_NEVER = 'never';
+
+	/**
 	 * Location
 	 *
 	 * @var string
@@ -181,28 +192,25 @@ class Tx_GoogleServices_Domain_Model_Node extends Tx_GoogleServices_Domain_Model
 	}
 
 	/**
+	 * @todo Implement integer converter
 	 *
-	 * @param string $changefreq
+	 * @param string $changefreq One of the Tx_GoogleServices_Domain_Model_Node::CHANGE_FREQ_* constants.
 	 *
 	 * @throws Exception
 	 */
 	public function setChangefreq($changefreq) {
-		$values = array(
-			'always',
-			'hourly',
-			'daily',
-			'weekly',
-			'monthly',
-			'yearly',
-			'never'
+		$possibleValues = array(
+			self::CHANGE_FREQ_AWLAYS,
+			self::CHANGE_FREQ_HOURLY,
+			self::CHANGE_FREQ_DAILY,
+			self::CHANGE_FREQ_WEEKLY,
+			self::CHNAGE_FREQ_MONTHLY,
+			self::CHANGE_FREQ_YEARLY,
+			self::CHANGE_FREQ_NEVER,
 		);
-		if (\TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($changefreq)) {
-			// Convert
-			# Caching Date
-		}
 
-		if (!in_array(trim($changefreq), $values)) {
-			throw new Exception('The value of the changefreq have to be one of theses values: ' . implode(',', $values));
+		if (!in_array(trim($changefreq), $possibleValues)) {
+			throw new Exception('The value of the changefreq have to be one of theses values: ' . implode(',', $possibleValues));
 		}
 		$this->changefreq = $changefreq;
 	}
