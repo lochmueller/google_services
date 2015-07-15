@@ -42,7 +42,7 @@ class Tx_GoogleServices_Controller_SitemapController extends \TYPO3\CMS\Extbase\
 		foreach ($providers as $provider) {
 			$provider = Tx_GoogleServices_Service_SitemapProvider::getProvider($provider);
 			$providerNodes = $provider->getRecords(intval($this->settings['startpoint']), $pages, $this);
-			$nodes = \TYPO3\CMS\Core\Utility\GeneralUtility::array_merge($nodes, $providerNodes);
+			$nodes = array_merge($nodes, $providerNodes);
 		}
 		$this->prepareAndAssignNodes($nodes);
 	}
