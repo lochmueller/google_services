@@ -11,17 +11,15 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Google Services',
-	'description' => 'A package of usefully Google Services as library for other extensions or directly use: Google Sitemaps incl. different Sitemap Provider, Google Verify, Google Analytics, Google Document Viewer',
-	'category' => 'plugin',
-	'version' => '0.4.1',
-	'state' => 'stable',
-	'author' => 'Tim Lochmueller',
+	'title'        => 'Google Services',
+	'description'  => 'A package of usefully Google Services as library for other extensions or directly use: Google Sitemaps incl. different Sitemap Provider, Google Verify, Google Analytics, Google Document Viewer',
+	'category'     => 'plugin',
+	'version'      => '0.4.2',
+	'state'        => 'stable',
+	'author'       => 'Tim Lochmueller',
 	'author_email' => 'webmaster@fruit-lab.de',
-	'constraints' =>
-	array (
-		'depends' =>
-		array (
+	'constraints'  => array(
+		'depends' => array(
 			'typo3' => '6.2.0-6.2.99',
 		),
 	),
