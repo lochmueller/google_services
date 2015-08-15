@@ -10,7 +10,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License 2 or higher
  */
 
-namespace FRUIT\GoogleServices\Domain\Repository;
+namespace FRUIT\GoogleServices\Hooks;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 

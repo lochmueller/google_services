@@ -52,7 +52,6 @@ class Pages implements SitemapProviderInterface
     public function getRecords($startPage, $basePages, SitemapController $obj)
     {
         $nodes = array();
-
         foreach ($basePages as $uid) {
             // Build URL
             $url = $obj->getUriBuilder()

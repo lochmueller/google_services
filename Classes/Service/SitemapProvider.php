@@ -8,6 +8,7 @@
 
 namespace FRUIT\GoogleServices\Service;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Exception\InvalidArgumentValueException;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -70,12 +71,37 @@ class SitemapProvider
         $providers = self::getProviders();
         $params['items'] = array();
 
-        foreach ($providers as $id => $provider) {
+
+        foreach ($providers as $provider) {
+            $parts = self::getExtensionNameByClassName($provider);
+            $extensionName = $parts['extensionName'];
             $params['items'][] = array(
-                $id,
-                $id
+                $provider,
+                $provider,
+                'EXT:' . GeneralUtility::camelCaseToLowerCaseUnderscored($extensionName) . '/ext_icon.gif',
             );
         }
+    }
+
+    /**
+     * @param $className
+     *
+     * @return array
+     */
+    static protected function getExtensionNameByClassName($className)
+    {
+        $matches = array();
+        if (strpos($className, '\\') !== false) {
+            if (substr($className, 0, 9) === 'TYPO3\\CMS') {
+                $extensionName = '^(?P<vendorName>[^\\\\]+\\\[^\\\\]+)\\\(?P<extensionName>[^\\\\]+)';
+            } else {
+                $extensionName = '^(?P<vendorName>[^\\\\]+)\\\\(?P<extensionName>[^\\\\]+)';
+            }
+            preg_match('/' . $extensionName . '\\\\.*$/ix', $className, $matches);
+        } else {
+            preg_match('/^Tx_(?P<extensionName>[^_]+)_.*$/ix', $className, $matches);
+        }
+        return $matches;
     }
 
 }
