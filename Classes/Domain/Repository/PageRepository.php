@@ -24,11 +24,12 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+namespace FRUIT\GoogleServices\Domain\Repository;
+
 /**
  * Page Repository
- * 
- * @author Tim Lochmüller
  */
-class Tx_GoogleServices_Domain_Repository_PageRepository extends Tx_GoogleServices_Domain_Repository_AbstractRepository {
-	
+class PageRepository extends AbstractRepository
+{
+
 }

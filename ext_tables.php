@@ -11,7 +11,6 @@ if (!defined('TYPO3_MODE')) {
  */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin($_EXTKEY, 'piSitemap', 'Google Services: Sitemap');
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['googleservices_pisitemap'] = 'pi_flexform';
-require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('google_services', 'Classes/User/Provider.php'));
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('googleservices_pisitemap', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/piSitemap.xml');
 
 /**

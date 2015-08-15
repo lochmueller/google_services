@@ -24,11 +24,16 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+namespace FRUIT\GoogleServices\View\Sitemap;
+
+use FRUIT\GoogleServices\View\AbstractXmlView;
+
 /**
  * An abstract XML View
  *
  * @api
  */
-class Tx_GoogleServices_View_Sitemap_Overview extends Tx_GoogleServices_View_AbstractXmlView {
+class Overview extends AbstractXmlView
+{
 
 }

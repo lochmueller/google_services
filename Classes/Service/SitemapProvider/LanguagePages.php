@@ -9,96 +9,106 @@
  */
 
 
+namespace FRUIT\GoogleServices\Service\SitemapProvider;
+
+use FRUIT\GoogleServices\Controller\SitemapController;
+use FRUIT\GoogleServices\Domain\Model\Node;
+use FRUIT\GoogleServices\Service\SitemapDataService;
+use TYPO3\CMS\Core\Database\DatabaseConnection;
+
 /**
  * LanguagePages
  *
  * @package    GoogleServices
  * @subpackage Service\SitemapProvider
  */
-class Tx_GoogleServices_Service_SitemapProvider_LanguagePages extends Tx_GoogleServices_Service_SitemapProvider_Pages {
+class LanguagePages extends Pages
+{
 
-	/**
-	 * Current language UID
-	 *
-	 * @var int
-	 */
-	protected $currentLanguageUid;
+    /**
+     * Current language UID
+     *
+     * @var int
+     */
+    protected $currentLanguageUid;
 
-	/**
-	 * Database
-	 *
-	 * @var t3lib_db $database
-	 */
-	protected $database;
+    /**
+     * Database
+     *
+     * @var DatabaseConnection $database
+     */
+    protected $database;
 
-	/**
-	 * Content object
-	 *
-	 * @var tslib_cObj $cObject
-	 */
-	protected $cObject;
+    /**
+     * Content object
+     *
+     * @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer $cObject
+     */
+    protected $cObject;
 
-	/**
-	 *
-	 */
-	public function __construct() {
-		$this->currentLanguageUid = intval($GLOBALS['TSFE']->sys_language_uid);
-		$this->database = $GLOBALS['TYPO3_DB'];
-		$this->cObject = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tslib_cObj');
-	}
+    /**
+     *
+     */
+    public function __construct()
+    {
+        $this->currentLanguageUid = intval($GLOBALS['TSFE']->sys_language_uid);
+        $this->database = $GLOBALS['TYPO3_DB'];
+        $this->cObject = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tslib_cObj');
+    }
 
-	/**
-	 * @param int                                            $startPage
-	 * @param array                                          $basePages
-	 * @param Tx_GoogleServices_Controller_SitemapController $obj
-	 *
-	 * @return array|Tx_GoogleServices_Domain_Model_Node
-	 */
-	public function getRecords($startPage, $basePages, Tx_GoogleServices_Controller_SitemapController $obj) {
-		$nodes = array();
-		foreach ($basePages as $uid) {
-			if ($this->currentLanguageUid) {
-				$fields = $this->cObject->enableFields('pages_language_overlay');
-				$overlay = $this->database->exec_SELECTgetSingleRow('uid', 'pages_language_overlay', ' pid = ' . intval($uid) . ' AND sys_language_uid = ' . $this->currentLanguageUid . $fields);
-				if (!is_array($overlay)) {
-					continue;
-				}
-			}
+    /**
+     * @param int               $startPage
+     * @param array             $basePages
+     * @param SitemapController $obj
+     *
+     * @return array
+     */
+    public function getRecords($startPage, $basePages, SitemapController $obj)
+    {
+        $nodes = array();
+        foreach ($basePages as $uid) {
+            if ($this->currentLanguageUid) {
+                $fields = $this->cObject->enableFields('pages_language_overlay');
+                $overlay = $this->database->exec_SELECTgetSingleRow('uid', 'pages_language_overlay',
+                    ' pid = ' . intval($uid) . ' AND sys_language_uid = ' . $this->currentLanguageUid . $fields);
+                if (!is_array($overlay)) {
+                    continue;
+                }
+            }
 
-			// Build URL
-			$url = $obj
-				->getUriBuilder()
-				->setTargetPageUid($uid)
-				->build();
+            // Build URL
+            $url = $obj->getUriBuilder()
+                ->setTargetPageUid($uid)
+                ->build();
 
-			// can't generate a valid url
-			if (!strlen($url)) {
-				continue;
-			}
+            // can't generate a valid url
+            if (!strlen($url)) {
+                continue;
+            }
 
-			// Get Record
-			$record = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('pages', $uid);
+            // Get Record
+            $record = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('pages', $uid);
 
-			// exclude Doctypes
-			if (in_array($record['doktype'], array(4))) {
-				continue;
-			}
+            // exclude Doctypes
+            if (in_array($record['doktype'], array(4))) {
+                continue;
+            }
 
-			// Build Node
-			$node = new Tx_GoogleServices_Domain_Model_Node();
-			$node->setLoc($url);
-			$node->setPriority($this->getPriority($startPage, $record));
-			$node->setChangefreq(Tx_GoogleServices_Service_SitemapDataService::mapTimeout2Period($record['cache_timeout']));
-			$node->setLastmod($this->getModifiedDate($record));
+            // Build Node
+            $node = new Node();
+            $node->setLoc($url);
+            $node->setPriority($this->getPriority($startPage, $record));
+            $node->setChangefreq(SitemapDataService::mapTimeout2Period($record['cache_timeout']));
+            $node->setLastmod($this->getModifiedDate($record));
 
-			#$geo = new Tx_GoogleServices_Domain_Model_Node_Geo();
-			#$geo->setFormat('kml');
-			#$node->setGeo($geo);
+            #$geo = new Tx_GoogleServices_Domain_Model_Node_Geo();
+            #$geo->setFormat('kml');
+            #$node->setGeo($geo);
 
-			$nodes[] = $node;
-		}
+            $nodes[] = $node;
+        }
 
-		return $nodes;
-	}
+        return $nodes;
+    }
 
 }

@@ -10,6 +10,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License 2 or higher
  */
 
+namespace FRUIT\GoogleServices\Domain\Repository;
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * CmsLayout.php
  *
@@ -18,54 +22,58 @@
  * @subpackage ...
  * @author     timlochmueller
  */
-class Tx_GoogleServices_Hooks_CmsLayout {
+class CmsLayout
+{
 
-	/**
-	 * @param array              $params
-	 * @param                    $object
-	 * @return string
-	 */
-	public function renderSitemapPlugin($params, $object) {
-		$xml = $params['row']['pi_flexform'];
-		$data = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($xml);
+    /**
+     * @param array              $params
+     * @param                    $object
+     *
+     * @return string
+     */
+    public function renderSitemapPlugin($params, $object)
+    {
+        $xml = $params['row']['pi_flexform'];
+        $data = GeneralUtility::xml2array($xml);
 
-		if (!isset($data['data'])) {
-			return '[no Configuration]';
-		}
+        if (!isset($data['data'])) {
+            return '[no Configuration]';
+        }
 
-		if (!isset($data['data']['sDEF'])) {
-			return '[no Configuration]';
-		}
+        if (!isset($data['data']['sDEF'])) {
+            return '[no Configuration]';
+        }
 
-		if (!isset($data['data']['sDEF']['lDEF'])) {
-			return '[no Configuration]';
-		}
+        if (!isset($data['data']['sDEF']['lDEF'])) {
+            return '[no Configuration]';
+        }
 
-		$configurationData = $data['data']['sDEF']['lDEF'];
+        $configurationData = $data['data']['sDEF']['lDEF'];
 
-		$configuration = array(
-			'Action'     => implode(';', $configurationData['switchableControllerActions']),
-			'Provider'   => implode(';', $configurationData['settings.provider']),
-			'StartPoint' => implode(';', $configurationData['settings.startpoint']),
-			'Depth'      => implode(';', $configurationData['settings.depth']),
-		);
+        $configuration = array(
+            'Action'     => implode(';', $configurationData['switchableControllerActions']),
+            'Provider'   => implode(';', $configurationData['settings.provider']),
+            'StartPoint' => implode(';', $configurationData['settings.startpoint']),
+            'Depth'      => implode(';', $configurationData['settings.depth']),
+        );
 
-		return $this->renderConfigurationTable($configuration);
-	}
+        return $this->renderConfigurationTable($configuration);
+    }
 
-	/**
-	 * Render the configuration table
-	 *
-	 * @param $elements
-	 *
-	 * @return string
-	 */
-	protected function renderConfigurationTable($elements) {
-		$table = '<table>';
-		foreach ($elements as $key => $value) {
-			$table .= '<tr><td><b>' . $key . ': </b></td><td>' . $value . '</td></tr>';
-		}
-		return $table . '</table>';
-	}
+    /**
+     * Render the configuration table
+     *
+     * @param $elements
+     *
+     * @return string
+     */
+    protected function renderConfigurationTable($elements)
+    {
+        $table = '<table>';
+        foreach ($elements as $key => $value) {
+            $table .= '<tr><td><b>' . $key . ': </b></td><td>' . $value . '</td></tr>';
+        }
+        return $table . '</table>';
+    }
 
 }

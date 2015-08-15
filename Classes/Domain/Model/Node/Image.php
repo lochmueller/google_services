@@ -24,102 +24,111 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+namespace FRUIT\GoogleServices\Domain\Model\Node;
+
 /**
  * Sitemap Image
- *
- * @copyright Copyright belongs to the respective authors
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_GoogleServices_Domain_Model_Node_Image extends Tx_GoogleServices_Domain_Model_AbstractModel {
+class Image extends AbstractModel
+{
 
-	/**
-	 * Location
-	 * 
-	 * @var string
-	 */
-	protected $loc;
-	
-	/**
-	 * Caption
-	 *
-	 * @var string
-	 */
-	protected $caption;
-	
-	/**
-	 * Title
-	 *
-	 * @var string
-	 */
-	protected $title;
-	
-	/**
-	 * License
-	 *
-	 * @var string
-	 */
-	protected $license;
+    /**
+     * Location
+     *
+     * @var string
+     */
+    protected $loc;
 
-	/**
-	 *
-	 * @return string 
-	 */
-	public function getLoc() {
-		return $this->loc;
-	}
-	
-	/**
-	 * @return string
-	 */
-	public function getCaption(){
-		return $this->caption;
-	}
-	
-	/**
-	 * @return string
-	 */
-	public function getTitle(){
-		return $this->title;
-	}
-	
-	/**
-	 * @return string
-	 */
-	public function getLicense(){
-		return $this->license;
-	}
+    /**
+     * Caption
+     *
+     * @var string
+     */
+    protected $caption;
 
-	/**
-	 *
-	 * @param string $loc
-	 *
-	 * @throws Exception
-	 */
-	public function setLoc($loc) {
-		if (!filter_var($loc, FILTER_VALIDATE_URL))
-			throw new Exception('The location of a google sitemap has have to be a valid URL');
-		$this->loc = $loc;
-	}
-	
-	/**
-	 * @param string $caption
-	 */
-	public function setCaption($caption){
-		$this->caption = $caption;
-	}
-	
-	/**
-	 * @param string $title
-	 */
-	public function setTitle($title){
-		$this->title = $title;
-	}
-	
-	/**
-	 * @param string $license
-	 */
-	public function setLicense($license){
-		$this->license = $license;
-	}
-	
+    /**
+     * Title
+     *
+     * @var string
+     */
+    protected $title;
+
+    /**
+     * License
+     *
+     * @var string
+     */
+    protected $license;
+
+    /**
+     *
+     * @return string
+     */
+    public function getLoc()
+    {
+        return $this->loc;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCaption()
+    {
+        return $this->caption;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLicense()
+    {
+        return $this->license;
+    }
+
+    /**
+     *
+     * @param string $loc
+     *
+     * @throws \Exception
+     */
+    public function setLoc($loc)
+    {
+        if (!filter_var($loc, FILTER_VALIDATE_URL)) {
+            throw new \Exception('The location of a google sitemap has have to be a valid URL');
+        }
+        $this->loc = $loc;
+    }
+
+    /**
+     * @param string $caption
+     */
+    public function setCaption($caption)
+    {
+        $this->caption = $caption;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @param string $license
+     */
+    public function setLicense($license)
+    {
+        $this->license = $license;
+    }
+
 }

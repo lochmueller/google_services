@@ -39,7 +39,7 @@
 							<label>Provider</label>
 							<config>
 								<type>select</type>
-								<itemsProcFunc>user_Tx_GoogleServices_User_Provider->select</itemsProcFunc>
+								<itemsProcFunc>FRUIT\GoogleServices\Service\SitemapProvider->flexformSelection</itemsProcFunc>
 								<maxitems>99</maxitems>
 								<multiple>1</multiple>
 								<renderMode>checkbox</renderMode>

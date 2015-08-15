@@ -24,22 +24,30 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+namespace FRUIT\GoogleServices\Domain\Repository;
+
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+
 /**
  * Abstract Repository
- * 
+ *
  * @author Tim Lochmüller
  */
-abstract class Tx_GoogleServices_Domain_Repository_AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+abstract class AbstractRepository extends Repository
+{
 
-	/**
-	 * Create Query without Storage Respect
-	 * 
-	 * @return Tx_Extbase_Persistence_QueryInterface 
-	 */
-	public function createQuery() {
-		$query = parent::createQuery();
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
-		return $query;
-	}
+    /**
+     * Create Query without Storage Respect
+     *
+     * @return QueryInterface
+     */
+    public function createQuery()
+    {
+        $query = parent::createQuery();
+        $query->getQuerySettings()
+            ->setRespectStoragePage(false);
+        return $query;
+    }
 
 }

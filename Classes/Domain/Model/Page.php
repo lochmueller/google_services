@@ -24,34 +24,36 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+namespace FRUIT\GoogleServices\Domain\Model\Node;
+
 /**
  * Page
- *
- * @copyright Copyright belongs to the respective authors
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_GoogleServices_Domain_Model_Page extends Tx_GoogleServices_Domain_Model_AbstractModel {
+class Page extends AbstractModel
+{
 
-	/**
-	 * The title
-	 * 
-	 * @var string
-	 * @validate NotEmpty 
-	 */
-	protected $title;
+    /**
+     * The title
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $title;
 
-	/**
-	 * @return string 
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-	/**
-	 * @param string $title 
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
 }

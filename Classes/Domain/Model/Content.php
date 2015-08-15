@@ -24,12 +24,12 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+namespace FRUIT\GoogleServices\Domain\Model\Node;
+
 /**
  * Page
- *
- * @copyright Copyright belongs to the respective authors
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_GoogleServices_Domain_Model_Content extends Tx_GoogleServices_Domain_Model_AbstractModel {
-	
+class Content extends AbstractModel
+{
+
 }

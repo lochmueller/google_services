@@ -1,15 +1,15 @@
 <?php
 
 $tempColumns = array(
-	'node_priority' => array(
-		'exclude' => 1,
-		'label'   => 'Node Priority',
-		'config'  => array(
-			'type' => 'input',
-			'size' => '7',
-			'eval' => 'double2',
-		),
-	),
+    'node_priority' => array(
+        'exclude' => 1,
+        'label'   => 'Node Priority',
+        'config'  => array(
+            'type' => 'input',
+            'size' => '7',
+            'eval' => 'double2',
+        ),
+    ),
 );
 
 
