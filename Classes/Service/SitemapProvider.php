@@ -50,7 +50,7 @@ class SitemapProvider
      * @param string $name
      *
      * @throws InvalidArgumentValueException
-     * @return object
+     * @return SitemapProviderInterface
      */
     public static function getProvider($name)
     {

@@ -14,7 +14,9 @@ namespace FRUIT\GoogleServices\Service\SitemapProvider;
 use FRUIT\GoogleServices\Controller\SitemapController;
 use FRUIT\GoogleServices\Domain\Model\Node;
 use FRUIT\GoogleServices\Service\SitemapDataService;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\DatabaseConnection;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * LanguagePages
@@ -53,7 +55,7 @@ class LanguagePages extends Pages
     {
         $this->currentLanguageUid = intval($GLOBALS['TSFE']->sys_language_uid);
         $this->database = $GLOBALS['TYPO3_DB'];
-        $this->cObject = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tslib_cObj');
+        $this->cObject = GeneralUtility::makeInstance('tslib_cObj');
     }
 
     /**
@@ -87,7 +89,7 @@ class LanguagePages extends Pages
             }
 
             // Get Record
-            $record = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('pages', $uid);
+            $record = BackendUtility::getRecord('pages', $uid);
 
             // exclude Doctypes
             if (in_array($record['doktype'], array(4))) {

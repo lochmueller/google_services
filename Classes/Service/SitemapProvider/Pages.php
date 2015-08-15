@@ -30,6 +30,7 @@ use FRUIT\GoogleServices\Controller\SitemapController;
 use FRUIT\GoogleServices\Domain\Model\Node;
 use FRUIT\GoogleServices\Service\SitemapDataService;
 use FRUIT\GoogleServices\Service\SitemapProviderInterface;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 
 /**
  * Description of Pages
@@ -64,7 +65,7 @@ class Pages implements SitemapProviderInterface
             }
 
             // Get Record
-            $record = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('pages', $uid);
+            $record = BackendUtility::getRecord('pages', $uid);
 
             // exclude Doctypes
             if (in_array($record['doktype'], array(

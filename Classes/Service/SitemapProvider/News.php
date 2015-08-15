@@ -29,6 +29,9 @@ namespace FRUIT\GoogleServices\Service\SitemapProvider;
 use FRUIT\GoogleServices\Controller\SitemapController;
 use FRUIT\GoogleServices\Domain\Model\Node;
 use FRUIT\GoogleServices\Service\SitemapProviderInterface;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
  * Description of Pages
@@ -51,10 +54,10 @@ class News implements SitemapProviderInterface
     public function getRecords($startPage, $basePages, SitemapController $obj)
     {
         $nodes = array();
-        if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('tt_news')) {
+        if (!ExtensionManagementUtility::isLoaded('tt_news')) {
             return $nodes;
         }
-        if (!\TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($GLOBALS['TSFE']->tmpl->setup['plugin.']['tt_news.']['singlePid'])) {
+        if (!MathUtility::canBeInterpretedAsInteger($GLOBALS['TSFE']->tmpl->setup['plugin.']['tt_news.']['singlePid'])) {
             throw new \Exception('You have to set tt_news singlePid.');
         }
         $singlePid = intval($GLOBALS['TSFE']->tmpl->setup['plugin.']['tt_news.']['singlePid']);
@@ -93,9 +96,10 @@ class News implements SitemapProviderInterface
     protected function alternativeSinglePid($newsId)
     {
         $database = $this->getDatabaseConnection();
-        $query = "SELECT tt_news_cat.single_pid FROM  tt_news_cat, tt_news_cat_mm WHERE tt_news_cat_mm.uid_local = " . intval($newsId) . " AND tt_news_cat_mm.uid_foreign = tt_news_cat.uid ORDER BY tt_news_cat_mm.sorting";
-        $res = $database->sql_query($query);
-        while ($row = $database->sql_fetch_assoc($res)) {
+        $rows = $database->exec_SELECTgetRows('tt_news_cat.single_pid', 'tt_news_cat, tt_news_cat_mm',
+            'tt_news_cat_mm.uid_local = ' . intval($newsId) . ' AND tt_news_cat_mm.uid_foreign = tt_news_cat.uid', '',
+            'tt_news_cat_mm.sorting');
+        foreach ($rows as $row) {
             if (intval($row['single_pid']) > 0) {
                 return intval($row['single_pid']);
             }
@@ -129,18 +133,10 @@ class News implements SitemapProviderInterface
     ) {
         if (is_array($GLOBALS['TCA'][$theTable])) {
             $database = $this->getDatabaseConnection();
-            $res = $database->exec_SELECTquery('*', $theTable,
-                $theField . ' IN (' . $theValue . ')' . ($useDeleteClause ? \TYPO3\CMS\Backend\Utility\BackendUtility::deleteClause($theTable) . ' ' : '') . \TYPO3\CMS\Backend\Utility\BackendUtility::versioningPlaceholderClause($theTable) . ' ' . $whereClause,
+            return $database->exec_SELECTgetRows('*', $theTable,
+                $theField . ' IN (' . $theValue . ')' . ($useDeleteClause ? BackendUtility::deleteClause($theTable) . ' ' : '') . BackendUtility::versioningPlaceholderClause($theTable) . ' ' . $whereClause,
                 // whereClauseMightContainGroupOrderBy
                 $groupBy, $orderBy, $limit);
-            $rows = array();
-            while ($row = $database->sql_fetch_assoc($res)) {
-                $rows[] = $row;
-            }
-            $database->sql_free_result($res);
-            if (count($rows)) {
-                return $rows;
-            }
         }
         return array();
     }

@@ -52,9 +52,9 @@ class Sitemap implements SitemapProviderInterface
     {
         $nodes = array();
         $database = $this->getDatabaseConnection();
-        $res = $database->exec_SELECTquery('*', 'tt_content',
+        $rows = $database->exec_SELECTgetRows('*', 'tt_content',
             'CType="list" AND list_type="googleservices_pisitemap" AND hidden=0 AND deleted=0');
-        while ($row = $database->sql_fetch_assoc($res)) {
+        foreach ($rows as $row) {
 
             $uid = $row['pid'];
             if ($uid == $GLOBALS['TSFE']->id) {

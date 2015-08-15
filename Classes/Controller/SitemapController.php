@@ -9,6 +9,7 @@
 namespace FRUIT\GoogleServices\Controller;
 
 use FRUIT\GoogleServices\Domain\Model\Node;
+use FRUIT\GoogleServices\Service\SitemapProvider;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 
