@@ -52,8 +52,9 @@ class Sitemap implements SitemapProviderInterface
     {
         $nodes = array();
         $database = $this->getDatabaseConnection();
-        $rows = $database->exec_SELECTgetRows('*', 'tt_content',
-            'CType="list" AND list_type="googleservices_pisitemap" AND hidden=0 AND deleted=0');
+        $rows = $database->exec_SELECTgetRows('*', 'tt_content', 'CType=' . $database->fullQuoteStr('list',
+                'tt_content') . ' AND list_type=' . $database->fullQuoteStr('googleservices_pisitemap',
+                'tt_content') . ' AND hidden=0 AND deleted=0');
         foreach ($rows as $row) {
 
             $uid = $row['pid'];

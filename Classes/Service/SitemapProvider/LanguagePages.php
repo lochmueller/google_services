@@ -72,7 +72,7 @@ class LanguagePages extends Pages
             if ($this->currentLanguageUid) {
                 $fields = $this->cObject->enableFields('pages_language_overlay');
                 $overlay = $this->database->exec_SELECTgetSingleRow('uid', 'pages_language_overlay',
-                    ' pid = ' . intval($uid) . ' AND sys_language_uid = ' . $this->currentLanguageUid . $fields);
+                    ' pid=' . intval($uid) . ' AND sys_language_uid=' . $this->currentLanguageUid . $fields);
                 if (!is_array($overlay)) {
                     continue;
                 }

@@ -97,7 +97,7 @@ class News implements SitemapProviderInterface
     {
         $database = $this->getDatabaseConnection();
         $rows = $database->exec_SELECTgetRows('tt_news_cat.single_pid', 'tt_news_cat, tt_news_cat_mm',
-            'tt_news_cat_mm.uid_local = ' . intval($newsId) . ' AND tt_news_cat_mm.uid_foreign = tt_news_cat.uid', '',
+            'tt_news_cat_mm.uid_local=' . intval($newsId) . ' AND tt_news_cat_mm.uid_foreign=tt_news_cat.uid', '',
             'tt_news_cat_mm.sorting');
         foreach ($rows as $row) {
             if (intval($row['single_pid']) > 0) {
