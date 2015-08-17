@@ -1,6 +1,6 @@
 <?php
 
-namespace FRUIT\GoogleServices\Domain\Model\Node;
+namespace FRUIT\GoogleServices\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 

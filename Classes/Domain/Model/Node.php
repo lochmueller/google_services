@@ -26,7 +26,6 @@
 
 namespace FRUIT\GoogleServices\Domain\Model;
 
-use FRUIT\GoogleServices\Domain\Model\Node\AbstractModel;
 use FRUIT\GoogleServices\Domain\Model\Node\Geo;
 use FRUIT\GoogleServices\Domain\Model\Node\Image;
 use FRUIT\GoogleServices\Domain\Model\Node\News;
