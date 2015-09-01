@@ -42,7 +42,7 @@ class SitemapController extends AbstractController
     public function overviewAction()
     {
         $pages = $this->getBasePages();
-        $provider = SitemapProvider::getProvider('Tx_GoogleServices_Service_SitemapProvider_Sitemap');
+        $provider = SitemapProvider::getProvider('FRUIT\\GoogleServices\\Service\\SitemapProvider\\Sitemap');
         $nodes = $provider->getRecords(intval($this->settings['startpoint']), $pages, $this);
 
         $this->prepareAndAssignNodes($nodes);

@@ -10,7 +10,7 @@ plugin.tx_googleservices {
 
 		classes {
 		
-			Tx_GoogleServices_Domain_Model_Page {
+			FRUIT\GoogleServices\Domain\Model\Page {
 				mapping {
 					tableName = pages
 					columns {
@@ -19,7 +19,7 @@ plugin.tx_googleservices {
 				}
 			}
 		
-			Tx_GoogleServices_Domain_Model_News {
+			FRUIT\GoogleServices\Domain\Model\News {
 				mapping {
 					tableName = tt_news
 					columns {
@@ -28,7 +28,7 @@ plugin.tx_googleservices {
 				}
 			}
 		
-			Tx_GoogleServices_Domain_Model_Content {
+			FRUIT\GoogleServices\Domain\Model\Content {
 				mapping {
 					tableName = tt_content
 					columns {

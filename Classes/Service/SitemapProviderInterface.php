@@ -19,7 +19,7 @@ interface SitemapProviderInterface
      * @param array             $basePages
      * @param SitemapController $obj
      *
-     * @return array of Tx_GoogleServices_Domain_Model_Node
+     * @return array of Node objects
      */
     public function getRecords($startPage, $basePages, SitemapController $obj);
 }

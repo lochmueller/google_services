@@ -103,7 +103,7 @@ class LanguagePages extends Pages
             $node->setChangefreq(SitemapDataService::mapTimeout2Period($record['cache_timeout']));
             $node->setLastmod($this->getModifiedDate($record));
 
-            #$geo = new Tx_GoogleServices_Domain_Model_Node_Geo();
+            #$geo = new Geo();
             #$geo->setFormat('kml');
             #$node->setGeo($geo);
 

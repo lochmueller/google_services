@@ -213,7 +213,7 @@ class Node extends AbstractModel
     /**
      * @todo Implement integer converter
      *
-     * @param string $changefreq One of the Tx_GoogleServices_Domain_Model_Node::CHANGE_FREQ_* constants.
+     * @param string $changefreq One of the Node::CHANGE_FREQ_* constants.
      *
      * @throws \Exception
      */

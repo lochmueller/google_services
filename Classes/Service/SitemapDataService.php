@@ -3,7 +3,7 @@
 namespace FRUIT\GoogleServices\Service;
 
 /**
- * Class Tx_GoogleServices_Service_SitemapDataService
+ * Sitemap data service
  */
 class SitemapDataService
 {
