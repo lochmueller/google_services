@@ -15,8 +15,6 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin('FRUIT.google_services', 'piSitemap', array(
     'Sitemap' => 'index',
-), array(
-    'Sitemap' => 'index',
 ));
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin('FRUIT.google_services', 'piDocument', array(
