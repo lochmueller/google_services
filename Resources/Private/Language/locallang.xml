@@ -6,7 +6,12 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="key">value</label>
+			<label index="recursive.I.0">0 level</label>
+			<label index="recursive.I.1">1 level</label>
+			<label index="recursive.I.2">2 level</label>
+			<label index="recursive.I.3">3 level</label>
+			<label index="recursive.I.4">4 level</label>
+			<label index="recursive.I.250">infinite</label>
 		</languageKey>
 	</data>
 </T3locallang>
