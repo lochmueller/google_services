@@ -6,6 +6,7 @@
 
 namespace FRUIT\GoogleServices\Domain\Model\Node;
 
+use FRUIT\GoogleServices\Domain\Model\AbstractModel;
 use TYPO3\CMS\Extbase\Mvc\Exception\InvalidArgumentValueException;
 
 /**

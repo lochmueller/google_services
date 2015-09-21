@@ -24,7 +24,7 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-namespace FRUIT\GoogleServices\Domain\Model\Node;
+namespace FRUIT\GoogleServices\Domain\Model;
 
 /**
  * Page

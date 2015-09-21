@@ -26,8 +26,6 @@
 
 namespace FRUIT\GoogleServices\Domain\Model;
 
-use FRUIT\GoogleServices\Domain\Model\Node\AbstractModel;
-
 /**
  * News
  */

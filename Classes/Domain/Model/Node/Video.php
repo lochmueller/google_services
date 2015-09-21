@@ -26,6 +26,8 @@
 
 namespace FRUIT\GoogleServices\Domain\Model\Node;
 
+use FRUIT\GoogleServices\Domain\Model\AbstractModel;
+
 /**
  * Sitemap Video
  */
