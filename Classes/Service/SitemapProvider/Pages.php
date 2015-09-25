@@ -43,8 +43,8 @@ class Pages implements SitemapProviderInterface
     /**
      * Get the Records
      *
-     * @param integer           $startPage
-     * @param array             $basePages
+     * @param integer $startPage
+     * @param array $basePages
      * @param SitemapController $obj
      *
      * @return array
@@ -75,13 +75,20 @@ class Pages implements SitemapProviderInterface
             }
 
             // Check FE Access
-            if ( $record['fe_group']!=0 ) continue; 
-            $rootLineList = $GLOBALS['TSFE']->sys_page->getRootLine( $record['uid'] );
-            $addToNode=true;
-            foreach ($rootLineList as $rootPage) {
-                if ( $rootPage['extendToSubpages']==1 && $rootPage['fe_group']!=0 ) { $addToNode=false; break; }
+            if ($record['fe_group'] != 0) {
+                continue;
             }
-            if ( $addToNode==false ) continue;
+            $rootLineList = $GLOBALS['TSFE']->sys_page->getRootLine($record['uid']);
+            $addToNode = true;
+            foreach ($rootLineList as $rootPage) {
+                if ($rootPage['extendToSubpages'] == 1 && $rootPage['fe_group'] != 0) {
+                    $addToNode = false;
+                    break;
+                }
+            }
+            if ($addToNode == false) {
+                continue;
+            }
 
             // Build Node
             $node = new Node();
@@ -104,7 +111,7 @@ class Pages implements SitemapProviderInterface
      * Get the priority
      *
      * @param integer $startPage
-     * @param array   $record
+     * @param array $record
      *
      * @return float
      */

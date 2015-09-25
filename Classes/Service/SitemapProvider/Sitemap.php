@@ -30,6 +30,8 @@ use FRUIT\GoogleServices\Controller\SitemapController;
 use FRUIT\GoogleServices\Domain\Model\Node;
 use FRUIT\GoogleServices\Service\SitemapProviderInterface;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\Page\PageRepository;
 
 /**
  * Sitemap Provider
@@ -42,8 +44,8 @@ class Sitemap implements SitemapProviderInterface
     /**
      * Get the Records
      *
-     * @param integer           $startPage
-     * @param array             $basePages
+     * @param integer $startPage
+     * @param array $basePages
      * @param SitemapController $obj
      *
      * @return array
@@ -52,10 +54,14 @@ class Sitemap implements SitemapProviderInterface
     {
         $nodes = array();
         $database = $this->getDatabaseConnection();
+        /** @var PageRepository $pageRepository */
+        $pageRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
         $rows = $database->exec_SELECTgetRows('*', 'tt_content', 'CType=' . $database->fullQuoteStr('list',
                 'tt_content') . ' AND list_type=' . $database->fullQuoteStr('googleservices_pisitemap',
-                'tt_content') . ' AND hidden=0 AND deleted=0');
+                'tt_content') . $pageRepository->enableFields('tt_content'));
+
         foreach ($rows as $row) {
+
 
             $uid = $row['pid'];
             if ($uid == $GLOBALS['TSFE']->id) {
@@ -76,13 +82,17 @@ class Sitemap implements SitemapProviderInterface
             $record = BackendUtility::getRecord('pages', $uid);
 
             // Check FE Access
-            if ( $record['fe_group']!=0 ) continue; 
-            $rootLineList = $GLOBALS['TSFE']->sys_page->getRootLine( $record['uid'] );
-            $addToNode=true;
+            $rootLineList = $GLOBALS['TSFE']->sys_page->getRootLine($record['uid']);
+            $addToNode = true;
             foreach ($rootLineList as $rootPage) {
-                if ( $rootPage['extendToSubpages']==1 && $rootPage['fe_group']!=0 ) { $addToNode=false; break; }
+                if ($rootPage['extendToSubpages'] == 1 && $rootPage['fe_group'] != 0) {
+                    $addToNode = false;
+                    break;
+                }
             }
-            if ( $addToNode==false ) continue;
+            if ($addToNode == false) {
+                continue;
+            }
 
             // Build Node
             $node = new Node();
