@@ -75,6 +75,15 @@ class Sitemap implements SitemapProviderInterface
             // Get Record
             $record = BackendUtility::getRecord('pages', $uid);
 
+            // Check FE Access
+            if ( $record['fe_group']!=0 ) continue; 
+            $rootLineList = $GLOBALS['TSFE']->sys_page->getRootLine( $record['uid'] );
+            $addToNode=true;
+            foreach ($rootLineList as $rootPage) {
+                if ( $rootPage['extendToSubpages']==1 && $rootPage['fe_group']!=0 ) { $addToNode=false; break; }
+            }
+            if ( $addToNode==false ) continue;
+
             // Build Node
             $node = new Node();
             $node->setLoc($url);
