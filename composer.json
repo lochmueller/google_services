@@ -1,0 +1,36 @@
+{
+  "name": "lochmueller/google_services",
+  "type": "typo3-cms-extension",
+  "description": "A package of usefully Google Services as library for other extensions or directly use: Google Sitemaps incl. different Sitemap Provider, Google Verify, Google Analytics, Google Document Viewer",
+  "autoload": {
+    "psr-4": {
+      "FRUIT\\GoogleServices\\": "Classes/"
+    }
+  },
+  "keywords": [
+    "TYPO3 CMS",
+    "Google",
+    "Extbase"
+  ],
+  "authors": [
+    {
+      "name": "Tim Lochmüller",
+      "email": "webmaster@fruit-lab.de",
+      "role": "Developer",
+      "homepage": "https://github.com/lochmueller"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "typo3/cms-core": "~6.2.14|>=7.6.0,<8.0"
+  },
+  "replace": {
+    "google_services": "self.version",
+    "typo3-ter/google_services": "self.version"
+  },
+  "homepage": "https://github.com/lochmueller/google_services",
+  "license": "GPL-2.0+",
+  "support": {
+    "issues": "https://github.com/lochmueller/google_services/issues"
+  }
+}
