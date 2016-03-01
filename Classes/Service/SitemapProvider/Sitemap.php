@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2011 Tim Lochmüller
- *  			
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -82,6 +82,9 @@ class Sitemap implements SitemapProviderInterface
             $record = BackendUtility::getRecord('pages', $uid);
 
             // Check FE Access
+            if ($record['fe_group'] != 0) {
+                continue;
+            }
             $rootLineList = $GLOBALS['TSFE']->sys_page->getRootLine($record['uid']);
             $addToNode = true;
             foreach ($rootLineList as $rootPage) {
