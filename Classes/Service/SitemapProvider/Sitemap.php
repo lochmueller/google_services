@@ -82,13 +82,13 @@ class Sitemap implements SitemapProviderInterface
             $record = BackendUtility::getRecord('pages', $uid);
 
             // Check FE Access
-            if ($record['fe_group'] != 0) {
+            if ($record['fe_group'] != 0 || $record['no_search'] != 0) {
                 continue;
             }
             $rootLineList = $GLOBALS['TSFE']->sys_page->getRootLine($record['uid']);
             $addToNode = true;
             foreach ($rootLineList as $rootPage) {
-                if ($rootPage['extendToSubpages'] == 1 && $rootPage['fe_group'] != 0) {
+                if ($rootPage['extendToSubpages'] == 1 && ($rootPage['fe_group'] != 0 || $record['no_search'] != 0)) {
                     $addToNode = false;
                     break;
                 }
