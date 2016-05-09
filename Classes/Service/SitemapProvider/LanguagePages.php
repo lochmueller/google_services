@@ -55,7 +55,7 @@ class LanguagePages extends Pages
     {
         $this->currentLanguageUid = intval($GLOBALS['TSFE']->sys_language_uid);
         $this->database = $GLOBALS['TYPO3_DB'];
-        $this->cObject = GeneralUtility::makeInstance('tslib_cObj');
+        $this->cObject = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
     }
 
     /**
