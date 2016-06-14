@@ -2,6 +2,7 @@
   "name": "lochmueller/google_services",
   "type": "typo3-cms-extension",
   "description": "A package of usefully Google Services as library for other extensions or directly use: Google Sitemaps incl. different Sitemap Provider, Google Verify, Google Analytics, Google Document Viewer",
+  "version": "1.0.4",
   "autoload": {
     "psr-4": {
       "FRUIT\\GoogleServices\\": "Classes/"
