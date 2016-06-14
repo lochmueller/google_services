@@ -73,8 +73,7 @@ class SitemapProvider
 
 
         foreach ($providers as $provider) {
-            $parts = self::getExtensionNameByClassName($provider);
-            $extensionName = $parts['extensionName'];
+            $extensionName = self::getExtensionNameByClassName($provider);
             $params['items'][] = array(
                 $provider,
                 $provider,
@@ -88,7 +87,7 @@ class SitemapProvider
      *
      * @return array
      */
-    static protected function getExtensionNameByClassName($className)
+    static public function getExtensionNameByClassName($className)
     {
         $matches = array();
         if (strpos($className, '\\') !== false) {
@@ -101,7 +100,7 @@ class SitemapProvider
         } else {
             preg_match('/^Tx_(?P<extensionName>[^_]+)_.*$/ix', $className, $matches);
         }
-        return $matches;
+        return isset($parts['extensionName']) ? $parts['extensionName'] : null;
     }
 
 }
