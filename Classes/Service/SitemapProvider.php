@@ -100,7 +100,7 @@ class SitemapProvider
         } else {
             preg_match('/^Tx_(?P<extensionName>[^_]+)_.*$/ix', $className, $matches);
         }
-        return isset($parts['extensionName']) ? $parts['extensionName'] : null;
+        return isset($matches['extensionName']) ? $matches['extensionName'] : null;
     }
 
 }
