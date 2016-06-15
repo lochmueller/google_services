@@ -34,8 +34,11 @@ class DocumentController extends AbstractController
             throw new \Exception('You have to select a valid FAL reference file', 12372183723);
         }
 
-        $images = $this->fileRepository->findByRelation('tt_content', 'pdf',
-            $this->configurationManager->getContentObject()->data['uid']);
+        $images = $this->fileRepository->findByRelation(
+            'tt_content',
+            'pdf',
+            $this->configurationManager->getContentObject()->data['uid']
+        );
         if (!sizeof($images)) {
             throw new \Exception('You have to select a valid FAL reference file', 12372183723);
         }
@@ -54,5 +57,4 @@ class DocumentController extends AbstractController
         ));
 
     }
-
 }

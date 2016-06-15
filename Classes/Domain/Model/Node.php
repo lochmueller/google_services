@@ -289,5 +289,4 @@ class Node extends AbstractModel
     {
         $this->news = $news;
     }
-
 }

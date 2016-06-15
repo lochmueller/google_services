@@ -71,8 +71,11 @@ class LanguagePages extends Pages
         foreach ($basePages as $uid) {
             if ($this->currentLanguageUid) {
                 $fields = $this->cObject->enableFields('pages_language_overlay');
-                $overlay = $this->database->exec_SELECTgetSingleRow('uid', 'pages_language_overlay',
-                    ' pid=' . intval($uid) . ' AND sys_language_uid=' . $this->currentLanguageUid . $fields);
+                $overlay = $this->database->exec_SELECTgetSingleRow(
+                    'uid',
+                    'pages_language_overlay',
+                    ' pid=' . intval($uid) . ' AND sys_language_uid=' . $this->currentLanguageUid . $fields
+                );
                 if (!is_array($overlay)) {
                     continue;
                 }
@@ -128,5 +131,4 @@ class LanguagePages extends Pages
 
         return $nodes;
     }
-
 }

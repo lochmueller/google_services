@@ -49,5 +49,4 @@ abstract class AbstractRepository extends Repository
             ->setRespectStoragePage(false);
         return $query;
     }
-
 }

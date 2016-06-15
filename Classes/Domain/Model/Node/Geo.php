@@ -44,10 +44,11 @@ class Geo extends AbstractModel
             'georss'
         ))
         ) {
-            throw new InvalidArgumentValueException('$format have to be kml, kmz or georss',
-                23479823479283);
+            throw new InvalidArgumentValueException(
+                '$format have to be kml, kmz or georss',
+                23479823479283
+            );
         }
         $this->format = $format;
     }
-
 }

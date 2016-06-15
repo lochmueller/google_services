@@ -122,11 +122,20 @@ class FalImages extends Pages
         $enabledFields .= $this->pageRepository->enableFields('pages');
 
         $database = $this->getDatabaseConnection();
-        $rows = $database->exec_SELECTgetRows('sys_file_reference.*', 'sys_file_reference, tt_content, pages',
-            'sys_file_reference.tablenames=' . $database->fullQuoteStr('tt_content',
-                'sys_file_reference') . ' AND sys_file_reference.fieldname=' . $database->fullQuoteStr('image',
-                'sys_file_reference') . ' AND sys_file_reference.uid_foreign=tt_content.uid AND tt_content.pid=pages.uid AND pages.uid IN (' . implode(',',
-                $pages) . ') ' . $enabledFields);
+        $rows = $database->exec_SELECTgetRows(
+            'sys_file_reference.*',
+            'sys_file_reference, tt_content, pages',
+            'sys_file_reference.tablenames=' . $database->fullQuoteStr(
+                'tt_content',
+                'sys_file_reference'
+            ) . ' AND sys_file_reference.fieldname=' . $database->fullQuoteStr(
+                'image',
+                'sys_file_reference'
+            ) . ' AND sys_file_reference.uid_foreign=tt_content.uid AND tt_content.pid=pages.uid AND pages.uid IN (' . implode(
+                ',',
+                $pages
+            ) . ') ' . $enabledFields
+        );
 
         foreach ($rows as $row) {
             $images[] = $this->resourceFactory->getFileReferenceObject($row['uid'], $row);
@@ -143,5 +152,4 @@ class FalImages extends Pages
     {
         return $GLOBALS['TYPO3_DB'];
     }
-
 }

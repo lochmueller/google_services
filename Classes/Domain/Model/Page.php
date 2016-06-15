@@ -55,5 +55,4 @@ class Page extends AbstractModel
     {
         $this->title = $title;
     }
-
 }

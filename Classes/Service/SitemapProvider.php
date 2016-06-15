@@ -87,7 +87,7 @@ class SitemapProvider
      *
      * @return array
      */
-    static public function getExtensionNameByClassName($className)
+    public static function getExtensionNameByClassName($className)
     {
         $matches = array();
         if (strpos($className, '\\') !== false) {
@@ -102,5 +102,4 @@ class SitemapProvider
         }
         return isset($matches['extensionName']) ? $matches['extensionName'] : null;
     }
-
 }

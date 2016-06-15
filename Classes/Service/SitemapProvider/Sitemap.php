@@ -56,13 +56,15 @@ class Sitemap implements SitemapProviderInterface
         $database = $this->getDatabaseConnection();
         /** @var PageRepository $pageRepository */
         $pageRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
-        $rows = $database->exec_SELECTgetRows('*', 'tt_content', 'CType=' . $database->fullQuoteStr('list',
-                'tt_content') . ' AND list_type=' . $database->fullQuoteStr('googleservices_pisitemap',
-                'tt_content') . $pageRepository->enableFields('tt_content'));
+        $rows = $database->exec_SELECTgetRows('*', 'tt_content', 'CType=' . $database->fullQuoteStr(
+            'list',
+            'tt_content'
+        ) . ' AND list_type=' . $database->fullQuoteStr(
+            'googleservices_pisitemap',
+            'tt_content'
+        ) . $pageRepository->enableFields('tt_content'));
 
         foreach ($rows as $row) {
-
-
             $uid = $row['pid'];
             if ($uid == $GLOBALS['TSFE']->id) {
                 continue;
@@ -135,5 +137,4 @@ class Sitemap implements SitemapProviderInterface
     {
         return $GLOBALS['TYPO3_DB'];
     }
-
 }

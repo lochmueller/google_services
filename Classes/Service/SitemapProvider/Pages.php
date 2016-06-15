@@ -167,5 +167,4 @@ class Pages implements SitemapProviderInterface
         }
         return $lastMod;
     }
-
 }

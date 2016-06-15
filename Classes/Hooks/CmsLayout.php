@@ -75,5 +75,4 @@ class CmsLayout
         }
         return $table . '</table>';
     }
-
 }

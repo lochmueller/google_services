@@ -96,9 +96,13 @@ class News implements SitemapProviderInterface
     protected function alternativeSinglePid($newsId)
     {
         $database = $this->getDatabaseConnection();
-        $rows = $database->exec_SELECTgetRows('tt_news_cat.single_pid', 'tt_news_cat, tt_news_cat_mm',
-            'tt_news_cat_mm.uid_local=' . intval($newsId) . ' AND tt_news_cat_mm.uid_foreign=tt_news_cat.uid', '',
-            'tt_news_cat_mm.sorting');
+        $rows = $database->exec_SELECTgetRows(
+            'tt_news_cat.single_pid',
+            'tt_news_cat, tt_news_cat_mm',
+            'tt_news_cat_mm.uid_local=' . intval($newsId) . ' AND tt_news_cat_mm.uid_foreign=tt_news_cat.uid',
+            '',
+            'tt_news_cat_mm.sorting'
+        );
         foreach ($rows as $row) {
             if (intval($row['single_pid']) > 0) {
                 return intval($row['single_pid']);
@@ -133,10 +137,15 @@ class News implements SitemapProviderInterface
     ) {
         if (is_array($GLOBALS['TCA'][$theTable])) {
             $database = $this->getDatabaseConnection();
-            return $database->exec_SELECTgetRows('*', $theTable,
+            return $database->exec_SELECTgetRows(
+                '*',
+                $theTable,
                 $theField . ' IN (' . $theValue . ')' . ($useDeleteClause ? BackendUtility::deleteClause($theTable) . ' ' : '') . BackendUtility::versioningPlaceholderClause($theTable) . ' ' . $whereClause,
                 // whereClauseMightContainGroupOrderBy
-                $groupBy, $orderBy, $limit);
+                $groupBy,
+                $orderBy,
+                $limit
+            );
         }
         return array();
     }

@@ -45,5 +45,4 @@ abstract class AbstractXmlView extends TemplateView
         header("Content-Type:text/xml");
         die($c);
     }
-
 }

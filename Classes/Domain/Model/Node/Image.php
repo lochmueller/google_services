@@ -132,5 +132,4 @@ class Image extends AbstractModel
     {
         $this->license = $license;
     }
-
 }

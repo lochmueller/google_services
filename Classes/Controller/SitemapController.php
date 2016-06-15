@@ -110,5 +110,4 @@ class SitemapController extends AbstractController
         }
         return $nodes;
     }
-
 }
