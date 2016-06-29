@@ -54,6 +54,13 @@ class Pages implements SitemapProviderInterface
     {
         $nodes = array();
         foreach ($basePages as $uid) {
+            // If currently in another language than default, check if the page is translated - else continue
+            if ($GLOBALS['TSFE']->sys_language_uid != 0) {
+                if (BackendUtility::getRecordLocalization('pages', $uid, $GLOBALS['TSFE']->sys_language_uid) == false) {
+                    continue;
+                }
+            }
+
             // Build URL
             $url = $obj->getUriBuilder()
                 ->setTargetPageUid($uid)
