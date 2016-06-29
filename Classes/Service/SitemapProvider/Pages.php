@@ -31,6 +31,7 @@ use FRUIT\GoogleServices\Domain\Model\Node;
 use FRUIT\GoogleServices\Service\SitemapDataService;
 use FRUIT\GoogleServices\Service\SitemapProviderInterface;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Frontend\Page\PageRepository;
 
 /**
  * Description of Pages
@@ -53,6 +54,13 @@ class Pages implements SitemapProviderInterface
     {
         $nodes = array();
         foreach ($basePages as $uid) {
+            // If currently in another language than default, check if the page is translated - else continue
+            if ($GLOBALS['TSFE']->sys_language_uid != 0) {
+                if (BackendUtility::getRecordLocalization('pages', $uid, $GLOBALS['TSFE']->sys_language_uid) == false) {
+                    continue;
+                }
+            }
+
             // Build URL
             $url = $obj->getUriBuilder()
                 ->setTargetPageUid($uid)
@@ -68,8 +76,8 @@ class Pages implements SitemapProviderInterface
 
             // exclude Doctypes
             if (in_array($record['doktype'], array(
-                3,
-                4
+                PageRepository::DOKTYPE_LINK,
+                PageRepository::DOKTYPE_SHORTCUT
             ))) {
                 continue;
             }
