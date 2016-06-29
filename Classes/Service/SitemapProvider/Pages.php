@@ -31,6 +31,7 @@ use FRUIT\GoogleServices\Domain\Model\Node;
 use FRUIT\GoogleServices\Service\SitemapDataService;
 use FRUIT\GoogleServices\Service\SitemapProviderInterface;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Frontend\Page\PageRepository;
 
 /**
  * Description of Pages
@@ -68,8 +69,8 @@ class Pages implements SitemapProviderInterface
 
             // exclude Doctypes
             if (in_array($record['doktype'], array(
-                3,
-                4
+                PageRepository::DOKTYPE_LINK,
+                PageRepository::DOKTYPE_SHORTCUT
             ))) {
                 continue;
             }
