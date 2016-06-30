@@ -56,7 +56,15 @@ class Pages implements SitemapProviderInterface
         foreach ($basePages as $uid) {
             // If currently in another language than default, check if the page is translated - else continue
             if ($GLOBALS['TSFE']->sys_language_uid != 0) {
-                if (BackendUtility::getRecordLocalization('pages', $uid, $GLOBALS['TSFE']->sys_language_uid) == false) {
+                $localizedPagesTable = 'pages';
+
+                // in TYPO3 6.x the localization isn't correctly handled when using BackendUtility::getRecordLocalization('pages')
+                // so we have to use the 'pages_language_overlay' table as param
+                if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 7000000) {
+                    $localizedPagesTable = 'pages_language_overlay';
+                }
+
+                if (BackendUtility::getRecordLocalization($localizedPagesTable, $uid, $GLOBALS['TSFE']->sys_language_uid) == false) {
                     continue;
                 }
             }
