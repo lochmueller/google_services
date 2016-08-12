@@ -55,6 +55,5 @@ class DocumentController extends AbstractController
             'width'    => $width,
             'height'   => $height,
         ));
-
     }
 }
