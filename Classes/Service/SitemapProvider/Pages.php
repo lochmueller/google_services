@@ -85,7 +85,8 @@ class Pages implements SitemapProviderInterface
             // exclude Doctypes
             if (in_array($record['doktype'], array(
                 PageRepository::DOKTYPE_LINK,
-                PageRepository::DOKTYPE_SHORTCUT
+                PageRepository::DOKTYPE_SHORTCUT,
+                PageRepository::DOKTYPE_SPACER
             ))) {
                 continue;
             }
