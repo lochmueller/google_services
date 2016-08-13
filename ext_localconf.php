@@ -22,3 +22,5 @@ if (!defined('TYPO3_MODE')) {
 ));
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['list_type_Info']['googleservices_pisitemap'][] = 'FRUIT\\GoogleServices\\Hooks\\CmsLayout->renderSitemapPlugin';
+
+$GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ($GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] == '' ? '' : ',') . 'no_search';
