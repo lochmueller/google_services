@@ -31,8 +31,8 @@ before_script:
   - export TYPO3_PATH_WEB="$PWD/.Build/Web"
 
 script:
-- |
-  echo; echo "Running unit tests"; .Build/bin/phpunit -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/UnitTests.xml Tests/Unit/
+#- |
+#  echo; echo "Running unit tests"; .Build/bin/phpunit -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/UnitTests.xml Tests/Unit/
 - |
   echo; echo "Executing PHP mess detector"; .Build/bin/phpmd Classes/ text cleancode,codesize,controversial,design,naming || true
 - |
