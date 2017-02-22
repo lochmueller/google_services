@@ -6,14 +6,10 @@ php:
 - 7
 
 env:
-- TYPO3_VERSION=^6.2.0
 - TYPO3_VERSION=^7.6.0
 
 matrix:
   fast_finish: true
-  exclude:
-    - php: 7
-      env: TYPO3_VERSION=^6.2.0
   include:
     - php: 7
       env: TYPO3_VERSION=^8.1.0
@@ -34,7 +30,7 @@ before_install:
   - if [ "$GITHUB_COMPOSER_AUTH" ]; then composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH; fi
 
 before_script:
-  - composer require typo3/cms=$TYPO3_VERSION
+  - composer require typo3/cms=$TYPO3_VERSION --ignore-platform-reqs
   - export TYPO3_PATH_WEB="$PWD/.Build/Web"
 
 script:

@@ -10,7 +10,7 @@
 # writing. "version" and "dependencies" must not be touched!
 ########################################################################
 
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[$_EXTKEY] = [
     'title'        => 'Google Services',
     'description'  => 'A package of usefully Google Services as library for other extensions or directly use: Google Sitemaps incl. different Sitemap Provider, Google Verify, Google Analytics, Google Document Viewer',
     'category'     => 'plugin',
@@ -18,10 +18,10 @@ $EM_CONF[$_EXTKEY] = array(
     'state'        => 'stable',
     'author'       => 'Tim Lochmueller',
     'author_email' => 'webmaster@fruit-lab.de',
-    'constraints'  => array(
-        'depends' => array(
+    'constraints'  => [
+        'depends' => [
             'php' => '7.0.0-0.0.0',
             'typo3' => '7.6.0-8.7.99',
-        ),
-    ),
-);
+        ],
+    ],
+];

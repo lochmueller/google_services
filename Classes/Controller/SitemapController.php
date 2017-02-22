@@ -26,7 +26,7 @@ class SitemapController extends AbstractController
     {
         $pages = $this->getBasePages();
         $providers = GeneralUtility::trimExplode(',', $this->settings['provider'], true);
-        $nodes = array();
+        $nodes = [];
 
         foreach ($providers as $provider) {
             $provider = SitemapProvider::getProvider($provider);
@@ -42,7 +42,7 @@ class SitemapController extends AbstractController
     public function overviewAction()
     {
         $pages = $this->getBasePages();
-        $provider = SitemapProvider::getProvider('FRUIT\\GoogleServices\\Service\\SitemapProvider\\Sitemap');
+        $provider = SitemapProvider::getProvider(SitemapProvider\Sitemap::class);
         $nodes = $provider->getRecords(intval($this->settings['startpoint']), $pages, $this);
 
         $this->prepareAndAssignNodes($nodes);
@@ -81,7 +81,7 @@ class SitemapController extends AbstractController
     protected function prepareAndAssignNodes($nodes)
     {
         if (!is_array($nodes)) {
-            $nodes = array($nodes);
+            $nodes = [$nodes];
         }
 
         $nodes = $this->removeDoublicates($nodes);
@@ -96,7 +96,7 @@ class SitemapController extends AbstractController
      */
     protected function removeDoublicates(array $nodes)
     {
-        $double = array();
+        $double = [];
         foreach ($nodes as $key => $value) {
             if ($value instanceof Node) {
                 if (in_array($value->getLoc(), $double)) {

@@ -17,6 +17,7 @@ use FRUIT\GoogleServices\Service\SitemapDataService;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * LanguagePages
@@ -55,7 +56,7 @@ class LanguagePages extends Pages
     {
         $this->currentLanguageUid = intval($GLOBALS['TSFE']->sys_language_uid);
         $this->database = $GLOBALS['TYPO3_DB'];
-        $this->cObject = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
+        $this->cObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
     }
 
     /**
@@ -67,7 +68,7 @@ class LanguagePages extends Pages
      */
     public function getRecords($startPage, $basePages, SitemapController $obj)
     {
-        $nodes = array();
+        $nodes = [];
         foreach ($basePages as $uid) {
             if ($this->currentLanguageUid) {
                 $fields = $this->cObject->enableFields('pages_language_overlay');
@@ -95,7 +96,7 @@ class LanguagePages extends Pages
             $record = BackendUtility::getRecord('pages', $uid);
 
             // exclude Doctypes
-            if (in_array($record['doktype'], array(4))) {
+            if (in_array($record['doktype'], [4])) {
                 continue;
             }
 

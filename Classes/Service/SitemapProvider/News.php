@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2011 Tim Lochmüller
- *  			
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -53,7 +53,7 @@ class News implements SitemapProviderInterface
      */
     public function getRecords($startPage, $basePages, SitemapController $obj)
     {
-        $nodes = array();
+        $nodes = [];
         if (!ExtensionManagementUtility::isLoaded('tt_news')) {
             return $nodes;
         }
@@ -68,7 +68,7 @@ class News implements SitemapProviderInterface
             $linkPid = ($alternativeSinglePid) ? $alternativeSinglePid : $singlePid;
             // Build URL
             $url = $obj->getUriBuilder()
-                ->setArguments(array('tx_ttnews' => array('tt_news' => $record['uid'])))
+                ->setArguments(['tx_ttnews' => ['tt_news' => $record['uid']]])
                 ->setTargetPageUid($linkPid)
                 ->build();
             // can't generate a valid url
@@ -147,7 +147,7 @@ class News implements SitemapProviderInterface
                 $limit
             );
         }
-        return array();
+        return [];
     }
 
     /**

@@ -49,11 +49,11 @@ class DocumentController extends AbstractController
         $height = MathUtility::canBeInterpretedAsInteger($this->settings['height']) ? $this->settings['height'] . 'px' : $this->settings['height'];
         $fileUrl = GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST') . '/' . $image->getPublicUrl();
 
-        $this->view->assignMultiple(array(
+        $this->view->assignMultiple([
             'fileUrl'  => urlencode($fileUrl),
             'language' => $GLOBALS['TSFE']->config['config']['language'],
             'width'    => $width,
             'height'   => $height,
-        ));
+        ]);
     }
 }

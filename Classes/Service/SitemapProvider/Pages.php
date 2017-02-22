@@ -52,7 +52,7 @@ class Pages implements SitemapProviderInterface
      */
     public function getRecords($startPage, $basePages, SitemapController $obj)
     {
-        $nodes = array();
+        $nodes = [];
         foreach ($basePages as $uid) {
             // If currently in another language than default, check if the page is translated - else continue
             if ($GLOBALS['TSFE']->sys_language_uid != 0) {

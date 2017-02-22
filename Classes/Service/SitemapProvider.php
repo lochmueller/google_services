@@ -21,9 +21,9 @@ class SitemapProvider
     /**
      * Provider Storage
      *
-     * @var Array
+     * @var array
      */
-    private static $provider = array();
+    private static $provider = [];
 
     /**
      * Add a Sitemap Provider
@@ -69,16 +69,16 @@ class SitemapProvider
     public function flexformSelection(&$params, &$ref)
     {
         $providers = self::getProviders();
-        $params['items'] = array();
+        $params['items'] = [];
 
 
         foreach ($providers as $provider) {
             $extensionName = self::getExtensionNameByClassName($provider);
-            $params['items'][] = array(
+            $params['items'][] = [
                 $provider,
                 $provider,
                 'EXT:' . GeneralUtility::camelCaseToLowerCaseUnderscored($extensionName) . '/ext_icon.gif',
-            );
+            ];
         }
     }
 
@@ -89,7 +89,7 @@ class SitemapProvider
      */
     public static function getExtensionNameByClassName($className)
     {
-        $matches = array();
+        $matches = [];
         if (strpos($className, '\\') !== false) {
             if (substr($className, 0, 9) === 'TYPO3\\CMS') {
                 $extensionName = '^(?P<vendorName>[^\\\\]+\\\[^\\\\]+)\\\(?P<extensionName>[^\\\\]+)';

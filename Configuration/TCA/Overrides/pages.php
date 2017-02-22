@@ -1,16 +1,16 @@
 <?php
 
-$tempColumns = array(
-    'node_priority' => array(
+$tempColumns = [
+    'node_priority' => [
         'exclude' => 1,
-        'label'   => 'Node Priority',
-        'config'  => array(
+        'label' => 'Node Priority',
+        'config' => [
             'type' => 'input',
             'size' => '7',
             'eval' => 'double2',
-        ),
-    ),
-);
+        ],
+    ],
+];
 
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumns);

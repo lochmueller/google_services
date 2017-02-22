@@ -7,20 +7,20 @@ if (!defined('TYPO3_MODE')) {
 /**
  * Sitemap
  */
-\FRUIT\GoogleServices\Service\SitemapProvider::addProvider('FRUIT\\GoogleServices\\Service\\SitemapProvider\\Pages');
-\FRUIT\GoogleServices\Service\SitemapProvider::addProvider('FRUIT\\GoogleServices\\Service\\SitemapProvider\\News');
-\FRUIT\GoogleServices\Service\SitemapProvider::addProvider('FRUIT\\GoogleServices\\Service\\SitemapProvider\\Sitemap');
-\FRUIT\GoogleServices\Service\SitemapProvider::addProvider('FRUIT\\GoogleServices\\Service\\SitemapProvider\\LanguagePages');
-\FRUIT\GoogleServices\Service\SitemapProvider::addProvider('FRUIT\\GoogleServices\\Service\\SitemapProvider\\FalImages');
+\FRUIT\GoogleServices\Service\SitemapProvider::addProvider(\FRUIT\GoogleServices\Service\SitemapProvider\Pages::class);
+\FRUIT\GoogleServices\Service\SitemapProvider::addProvider(\FRUIT\GoogleServices\Service\SitemapProvider\News::class);
+\FRUIT\GoogleServices\Service\SitemapProvider::addProvider(\FRUIT\GoogleServices\Service\SitemapProvider\Sitemap::class);
+\FRUIT\GoogleServices\Service\SitemapProvider::addProvider(\FRUIT\GoogleServices\Service\SitemapProvider\LanguagePages::class);
+\FRUIT\GoogleServices\Service\SitemapProvider::addProvider(\FRUIT\GoogleServices\Service\SitemapProvider\FalImages::class);
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin('FRUIT.google_services', 'piSitemap', array(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin('FRUIT.google_services', 'piSitemap', [
     'Sitemap' => 'index',
-));
+]);
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin('FRUIT.google_services', 'piDocument', array(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin('FRUIT.google_services', 'piDocument', [
     'Document' => 'index',
-));
+]);
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['list_type_Info']['googleservices_pisitemap'][] = 'FRUIT\\GoogleServices\\Hooks\\CmsLayout->renderSitemapPlugin';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['list_type_Info']['googleservices_pisitemap'][] = \FRUIT\GoogleServices\Hooks\CmsLayout::class . '->renderSitemapPlugin';
 
 $GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ($GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] == '' ? '' : ',') . 'no_search';

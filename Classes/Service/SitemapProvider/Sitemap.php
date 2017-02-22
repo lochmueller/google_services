@@ -52,10 +52,10 @@ class Sitemap implements SitemapProviderInterface
      */
     public function getRecords($startPage, $basePages, SitemapController $obj)
     {
-        $nodes = array();
+        $nodes = [];
         $database = $this->getDatabaseConnection();
         /** @var PageRepository $pageRepository */
-        $pageRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
+        $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
         $rows = $database->exec_SELECTgetRows('*', 'tt_content', 'CType=' . $database->fullQuoteStr(
             'list',
             'tt_content'

@@ -49,13 +49,13 @@ class FalImages extends Pages
      */
     public function getRecords($startPage, $basePages, SitemapController $obj)
     {
-        $nodes = array();
+        $nodes = [];
         foreach ($basePages as $uid) {
-            $images = $this->getImagesByPages(array($uid));
+            $images = $this->getImagesByPages([$uid]);
             if (!sizeof($images)) {
                 continue;
             }
-            $imageNodes = array();
+            $imageNodes = [];
             foreach ($images as $imageReference) {
                 /** @var $imageReference \TYPO3\CMS\Core\Resource\FileReference */
                 $url = GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST') . '/' . $imageReference->getOriginalFile()
@@ -83,7 +83,7 @@ class FalImages extends Pages
             $record = BackendUtility::getRecord('pages', $uid);
 
             // exclude Doctypes
-            if (in_array($record['doktype'], array(4))) {
+            if (in_array($record['doktype'], [4])) {
                 continue;
             }
 
@@ -111,7 +111,7 @@ class FalImages extends Pages
      */
     protected function getImagesByPages(array $pages)
     {
-        $images = array();
+        $images = [];
 
         if (!sizeof($pages)) {
             return $images;

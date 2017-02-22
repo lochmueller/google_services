@@ -50,12 +50,12 @@ class CmsLayout
 
         $configurationData = $data['data']['sDEF']['lDEF'];
 
-        $configuration = array(
+        $configuration = [
             'Action'     => implode(';', $configurationData['switchableControllerActions']),
             'Provider'   => implode(';', $configurationData['settings.provider']),
             'StartPoint' => implode(';', $configurationData['settings.startpoint']),
             'Depth'      => implode(';', $configurationData['settings.depth']),
-        );
+        ];
 
         return $this->renderConfigurationTable($configuration);
     }

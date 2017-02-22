@@ -38,11 +38,11 @@ class Geo extends AbstractModel
     public function setFormat($format)
     {
         $format = strtolower($format);
-        if (!in_array($format, array(
+        if (!in_array($format, [
             'kml',
             'kmz',
             'georss'
-        ))
+        ])
         ) {
             throw new InvalidArgumentValueException(
                 '$format have to be kml, kmz or georss',

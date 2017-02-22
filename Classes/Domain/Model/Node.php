@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2011 Tim Lochmüller
- *  			
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -219,7 +219,7 @@ class Node extends AbstractModel
      */
     public function setChangefreq($changefreq)
     {
-        $possibleValues = array(
+        $possibleValues = [
             self::CHANGE_FREQ_AWLAYS,
             self::CHANGE_FREQ_HOURLY,
             self::CHANGE_FREQ_DAILY,
@@ -227,7 +227,7 @@ class Node extends AbstractModel
             self::CHNAGE_FREQ_MONTHLY,
             self::CHANGE_FREQ_YEARLY,
             self::CHANGE_FREQ_NEVER,
-        );
+        ];
 
         if (!in_array(trim($changefreq), $possibleValues)) {
             throw new \Exception('The value of the changefreq have to be one of theses values: ' . implode(',', $possibleValues));
