@@ -1,11 +1,15 @@
 <?php
 
+/**
+ * SitemapProivderInterface
+ */
+
 namespace FRUIT\GoogleServices\Service;
 
 use FRUIT\GoogleServices\Controller\SitemapController;
 
 /**
- * Description of SitemapProivderInterface
+ * SitemapProivderInterface
  *
  * @author timlochmueller
  */

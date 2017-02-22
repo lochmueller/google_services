@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Abstract model
+ */
+
 namespace FRUIT\GoogleServices\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;

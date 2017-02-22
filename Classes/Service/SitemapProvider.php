@@ -67,6 +67,8 @@ class SitemapProvider
     }
 
     /**
+     * Flex form selection
+     *
      * @param $params
      * @param $ref
      */
@@ -87,6 +89,8 @@ class SitemapProvider
     }
 
     /**
+     * Get extension name by class name
+     *
      * @param $className
      *
      * @return array

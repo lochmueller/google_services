@@ -89,6 +89,7 @@ class SitemapController extends AbstractController
     }
 
     /**
+     * Remove doublicates
      *
      * @param array $nodes
      *
