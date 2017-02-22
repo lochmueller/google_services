@@ -112,7 +112,7 @@ class LanguagePages extends Pages
                     break;
                 }
             }
-            if ($addToNode == false) {
+            if ($addToNode === false) {
                 continue;
             }
 

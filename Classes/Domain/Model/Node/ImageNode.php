@@ -11,7 +11,7 @@ use FRUIT\GoogleServices\Domain\Model\AbstractModel;
 /**
  * Sitemap Image
  */
-class Image extends AbstractModel
+class ImageNode extends AbstractModel
 {
 
     /**

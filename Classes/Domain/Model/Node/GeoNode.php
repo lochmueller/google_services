@@ -12,7 +12,7 @@ use TYPO3\CMS\Extbase\Mvc\Exception\InvalidArgumentValueException;
 /**
  * Sitemap Geo
  */
-class Geo extends AbstractModel
+class GeoNode extends AbstractModel
 {
 
     /**

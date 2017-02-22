@@ -26,8 +26,8 @@ class CmsLayout
 {
 
     /**
-     * @param array              $params
-     * @param                    $object
+     * @param array $params
+     * @param object $object
      *
      * @return string
      */
@@ -51,10 +51,10 @@ class CmsLayout
         $configurationData = $data['data']['sDEF']['lDEF'];
 
         $configuration = [
-            'Action'     => implode(';', $configurationData['switchableControllerActions']),
-            'Provider'   => implode(';', $configurationData['settings.provider']),
+            'Action' => implode(';', $configurationData['switchableControllerActions']),
+            'Provider' => implode(';', $configurationData['settings.provider']),
             'StartPoint' => implode(';', $configurationData['settings.startpoint']),
-            'Depth'      => implode(';', $configurationData['settings.depth']),
+            'Depth' => implode(';', $configurationData['settings.depth']),
         ];
 
         return $this->renderConfigurationTable($configuration);

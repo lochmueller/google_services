@@ -11,6 +11,7 @@ use FRUIT\GoogleServices\Domain\Model\Node;
 use FRUIT\GoogleServices\Service\SitemapDataService;
 use FRUIT\GoogleServices\Service\SitemapProviderInterface;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Frontend\Page\PageRepository;
 
 /**
@@ -40,7 +41,7 @@ class Pages implements SitemapProviderInterface
 
                 // in TYPO3 6.x the localization isn't correctly handled when using BackendUtility::getRecordLocalization('pages')
                 // so we have to use the 'pages_language_overlay' table as param
-                if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 7000000) {
+                if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 7000000) {
                     $localizedPagesTable = 'pages_language_overlay';
                 }
 
@@ -84,7 +85,7 @@ class Pages implements SitemapProviderInterface
                     break;
                 }
             }
-            if ($addToNode == false) {
+            if ($addToNode === false) {
                 continue;
             }
 

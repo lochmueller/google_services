@@ -69,8 +69,8 @@ class SitemapProvider
     /**
      * Flex form selection
      *
-     * @param $params
-     * @param $ref
+     * @param array $params
+     * @param object $ref
      */
     public function flexformSelection(&$params, &$ref)
     {

@@ -6,10 +6,10 @@
 
 namespace FRUIT\GoogleServices\Domain\Model;
 
-use FRUIT\GoogleServices\Domain\Model\Node\Geo;
-use FRUIT\GoogleServices\Domain\Model\Node\Image;
-use FRUIT\GoogleServices\Domain\Model\Node\News;
-use FRUIT\GoogleServices\Domain\Model\Node\Video;
+use FRUIT\GoogleServices\Domain\Model\Node\GeoNode;
+use FRUIT\GoogleServices\Domain\Model\Node\ImageNode;
+use FRUIT\GoogleServices\Domain\Model\Node\NewsNode;
+use FRUIT\GoogleServices\Domain\Model\Node\VideoNode;
 
 /**
  * Sitemap Node
@@ -57,7 +57,7 @@ class Node extends AbstractModel
     protected $priority;
 
     /**
-     * @var Geo
+     * @var GeoNode
      */
     protected $geo;
 
@@ -67,12 +67,12 @@ class Node extends AbstractModel
     protected $images;
 
     /**
-     * @var Video
+     * @var VideoNode
      */
     protected $video;
 
     /**
-     * @var News
+     * @var NewsNode
      */
     protected $news;
 
@@ -119,7 +119,7 @@ class Node extends AbstractModel
     }
 
     /**
-     * @return Geo
+     * @return GeoNode
      */
     public function getGeo()
     {
@@ -136,16 +136,16 @@ class Node extends AbstractModel
     }
 
     /**
-     * @param Image $image
+     * @param ImageNode $image
      */
-    public function addImage(Image $image)
+    public function addImage(ImageNode $image)
     {
         $this->images[] = $image;
     }
 
     /**
      *
-     * @return Video
+     * @return VideoNode
      */
     public function getVideo()
     {
@@ -154,7 +154,7 @@ class Node extends AbstractModel
 
     /**
      *
-     * @return News
+     * @return NewsNode
      */
     public function getNews()
     {
@@ -231,9 +231,9 @@ class Node extends AbstractModel
     }
 
     /**
-     * @param Geo $geo
+     * @param GeoNode $geo
      */
-    public function setGeo(Geo $geo)
+    public function setGeo(GeoNode $geo)
     {
         $this->geo = $geo;
     }
@@ -249,18 +249,18 @@ class Node extends AbstractModel
 
     /**
      *
-     * @param Video $video
+     * @param VideoNode $video
      */
-    public function setVideo(Video $video)
+    public function setVideo(VideoNode $video)
     {
         $this->video = $video;
     }
 
     /**
      *
-     * @param News $news
+     * @param NewsNode $news
      */
-    public function setNews(News $news)
+    public function setNews(NewsNode $news)
     {
         $this->news = $news;
     }

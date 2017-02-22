@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Sitemap News
+ * Sitemap Video
  */
 
 namespace FRUIT\GoogleServices\Domain\Model\Node;
@@ -9,9 +9,9 @@ namespace FRUIT\GoogleServices\Domain\Model\Node;
 use FRUIT\GoogleServices\Domain\Model\AbstractModel;
 
 /**
- * Sitemap News
+ * Sitemap Video
  */
-class News extends AbstractModel
+class VideoNode extends AbstractModel
 {
 
 }

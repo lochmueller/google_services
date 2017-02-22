@@ -75,7 +75,7 @@ class Sitemap implements SitemapProviderInterface
                     break;
                 }
             }
-            if ($addToNode == false) {
+            if ($addToNode === false) {
                 continue;
             }
 
