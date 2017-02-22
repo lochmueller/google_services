@@ -50,7 +50,7 @@ class Pages implements SitemapProviderInterface
      *
      * @return array
      */
-    public function getRecords($startPage, $basePages, SitemapController $obj)
+    public function getRecords($startPage, $basePages, SitemapController $obj): array
     {
         $nodes = [];
         foreach ($basePages as $uid) {
@@ -83,11 +83,11 @@ class Pages implements SitemapProviderInterface
             $record = BackendUtility::getRecord('pages', $uid);
 
             // exclude Doctypes
-            if (in_array($record['doktype'], array(
+            if (in_array($record['doktype'], [
                 PageRepository::DOKTYPE_LINK,
                 PageRepository::DOKTYPE_SHORTCUT,
                 PageRepository::DOKTYPE_SPACER
-            ))) {
+            ])) {
                 continue;
             }
 

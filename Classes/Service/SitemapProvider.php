@@ -59,7 +59,11 @@ class SitemapProvider
             throw new InvalidArgumentValueException($name . ' not exists');
         }
         $obj = new ObjectManager();
-        return $obj->get($name);
+        $return = $obj->get($name);
+        if (!($return instanceof SitemapProviderInterface)) {
+            throw new InvalidArgumentValueException($name . ' has to implement the SitemapProviderInterface interface');
+        }
+        return $return;
     }
 
     /**

@@ -51,7 +51,7 @@ class News implements SitemapProviderInterface
      * @throws \Exception
      * @return array
      */
-    public function getRecords($startPage, $basePages, SitemapController $obj)
+    public function getRecords($startPage, $basePages, SitemapController $obj): array
     {
         $nodes = [];
         if (!ExtensionManagementUtility::isLoaded('tt_news')) {

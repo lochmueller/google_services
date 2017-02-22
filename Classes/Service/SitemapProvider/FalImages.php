@@ -47,7 +47,7 @@ class FalImages extends Pages
      *
      * @return array
      */
-    public function getRecords($startPage, $basePages, SitemapController $obj)
+    public function getRecords($startPage, $basePages, SitemapController $obj): array
     {
         $nodes = [];
         foreach ($basePages as $uid) {

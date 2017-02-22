@@ -15,11 +15,11 @@ interface SitemapProviderInterface
     /**
      * Get the Records
      *
-     * @param integer           $startPage
-     * @param array             $basePages
+     * @param integer $startPage
+     * @param array $basePages
      * @param SitemapController $obj
      *
      * @return array of Node objects
      */
-    public function getRecords($startPage, $basePages, SitemapController $obj);
+    public function getRecords($startPage, $basePages, SitemapController $obj): array;
 }

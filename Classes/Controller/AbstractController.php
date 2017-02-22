@@ -12,7 +12,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 /**
  * Abstract controller
  */
-class AbstractController extends ActionController
+abstract class AbstractController extends ActionController
 {
 
 }
