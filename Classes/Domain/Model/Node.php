@@ -57,26 +57,35 @@ class Node extends AbstractModel
     protected $priority;
 
     /**
+     * Geo
+     *
      * @var GeoNode
      */
     protected $geo;
 
     /**
+     * Images
+     *
      * @var array
      */
-    protected $images;
+    protected $images = [];
 
     /**
+     * Video
+     *
      * @var VideoNode
      */
     protected $video;
 
     /**
+     * News
+     *
      * @var NewsNode
      */
     protected $news;
 
     /**
+     * Get location
      *
      * @return string
      */
@@ -86,6 +95,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * Get last modification
      *
      * @return string
      */
@@ -95,6 +105,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * Get change frequency
      *
      * @return string
      */
@@ -107,6 +118,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * Get priotiy
      *
      * @return float
      */
@@ -119,6 +131,8 @@ class Node extends AbstractModel
     }
 
     /**
+     * Get geo
+     *
      * @return GeoNode
      */
     public function getGeo()
@@ -127,6 +141,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * Get images
      *
      * @return array
      */
@@ -136,6 +151,8 @@ class Node extends AbstractModel
     }
 
     /**
+     * Add image
+     *
      * @param ImageNode $image
      */
     public function addImage(ImageNode $image)
@@ -144,6 +161,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * get Video
      *
      * @return VideoNode
      */
@@ -153,6 +171,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * Get news
      *
      * @return NewsNode
      */
@@ -162,6 +181,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * Set location
      *
      * @param string $loc
      *
@@ -176,6 +196,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * Set last modifiction date
      *
      * @param string $lastmod
      */
@@ -188,6 +209,8 @@ class Node extends AbstractModel
     }
 
     /**
+     * Set change frequency
+     *
      * @param string $changefreq One of the Node::CHANGE_FREQ_* constants.
      *
      * @throws \Exception
@@ -211,6 +234,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * Set priority
      *
      * @param float $priority
      *
@@ -231,6 +255,8 @@ class Node extends AbstractModel
     }
 
     /**
+     * Set geo
+     *
      * @param GeoNode $geo
      */
     public function setGeo(GeoNode $geo)
@@ -239,6 +265,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * Set images
      *
      * @param array $images
      */
@@ -248,6 +275,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * Set video
      *
      * @param VideoNode $video
      */
@@ -257,6 +285,7 @@ class Node extends AbstractModel
     }
 
     /**
+     * Set news
      *
      * @param NewsNode $news
      */

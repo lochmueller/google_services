@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Sitemap data service
+ */
+
 namespace FRUIT\GoogleServices\Service;
 
 /**
@@ -9,6 +13,7 @@ class SitemapDataService
 {
 
     /**
+     * Map timestamp to period
      *
      * @param integer $sec
      *

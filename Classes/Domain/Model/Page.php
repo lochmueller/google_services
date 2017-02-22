@@ -13,7 +13,7 @@ class Page extends AbstractModel
 {
 
     /**
-     * The title
+     * Title
      *
      * @var string
      * @validate NotEmpty
@@ -21,6 +21,8 @@ class Page extends AbstractModel
     protected $title;
 
     /**
+     * Get title
+     *
      * @return string
      */
     public function getTitle()
@@ -29,6 +31,8 @@ class Page extends AbstractModel
     }
 
     /**
+     * Set title
+     *
      * @param string $title
      */
     public function setTitle($title)

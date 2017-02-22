@@ -1,13 +1,7 @@
 <?php
+
 /**
- * CmsLayout.php
- *
- * General file information
- *
- * @category   Extension
- * @author     timlochmueller
- * @version    CVS: $Id:21.01.13$
- * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License 2 or higher
+ * CmsLayout
  */
 
 namespace FRUIT\GoogleServices\Hooks;
@@ -15,17 +9,14 @@ namespace FRUIT\GoogleServices\Hooks;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * CmsLayout.php
- *
- * General class information
- *
- * @subpackage ...
- * @author     timlochmueller
+ * CmsLayout
  */
 class CmsLayout
 {
 
     /**
+     * render sitemap plugin information
+     *
      * @param array $params
      * @param object $object
      *

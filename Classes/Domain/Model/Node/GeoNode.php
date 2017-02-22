@@ -23,6 +23,8 @@ class GeoNode extends AbstractModel
     protected $format;
 
     /**
+     * Get format
+     *
      * @return string
      */
     public function getFormat()
@@ -31,6 +33,8 @@ class GeoNode extends AbstractModel
     }
 
     /**
+     * Set format
+     *
      * @param string $format
      *
      * @throws InvalidArgumentValueException

@@ -43,6 +43,7 @@ class ImageNode extends AbstractModel
     protected $license;
 
     /**
+     * Get location
      *
      * @return string
      */
@@ -52,6 +53,8 @@ class ImageNode extends AbstractModel
     }
 
     /**
+     * Get caption
+     *
      * @return string
      */
     public function getCaption()
@@ -60,6 +63,8 @@ class ImageNode extends AbstractModel
     }
 
     /**
+     * Get title
+     *
      * @return string
      */
     public function getTitle()
@@ -68,6 +73,8 @@ class ImageNode extends AbstractModel
     }
 
     /**
+     * Get license
+     *
      * @return string
      */
     public function getLicense()
@@ -76,6 +83,7 @@ class ImageNode extends AbstractModel
     }
 
     /**
+     * Set location
      *
      * @param string $loc
      *
@@ -90,6 +98,8 @@ class ImageNode extends AbstractModel
     }
 
     /**
+     * Set caption
+     *
      * @param string $caption
      */
     public function setCaption($caption)
@@ -98,6 +108,8 @@ class ImageNode extends AbstractModel
     }
 
     /**
+     * Set title
+     *
      * @param string $title
      */
     public function setTitle($title)
@@ -106,6 +118,8 @@ class ImageNode extends AbstractModel
     }
 
     /**
+     * Set license
+     *
      * @param string $license
      */
     public function setLicense($license)

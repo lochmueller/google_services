@@ -2,12 +2,7 @@
 
 /**
  * LanguagePages
- *
- * @category   Extension
- * @package    GoogleServices
- * @subpackage Service\SitemapProvider
  */
-
 
 namespace FRUIT\GoogleServices\Service\SitemapProvider;
 
@@ -21,9 +16,6 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * LanguagePages
- *
- * @package    GoogleServices
- * @subpackage Service\SitemapProvider
  */
 class LanguagePages extends Pages
 {
@@ -50,7 +42,7 @@ class LanguagePages extends Pages
     protected $cObject;
 
     /**
-     *
+     * Build up the object
      */
     public function __construct()
     {
@@ -60,6 +52,8 @@ class LanguagePages extends Pages
     }
 
     /**
+     * Get the record
+     *
      * @param int $startPage
      * @param array $basePages
      * @param SitemapController $obj
