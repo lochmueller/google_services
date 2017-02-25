@@ -72,7 +72,12 @@ class Pages implements SitemapProviderInterface
                 continue;
             }
 
-            // Check FE Access
+            // Exclude pages with exclude flag
+            if ($record['exclude_sitemap']) {
+                continue;
+            }
+
+                // Check FE Access
             if ($record['fe_group'] != 0 || $record['no_search'] != 0) {
                 continue;
             }
