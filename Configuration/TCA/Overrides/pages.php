@@ -10,8 +10,16 @@ $tempColumns = [
             'eval' => 'double2',
         ],
     ],
+    'exclude_sitemap' => [
+        'exclude' => 1,
+        'label' => 'Exclude from Sitemap',
+        'config' => [
+            'type' => 'check',
+        ],
+    ],
 ];
 
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumns);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', 'node_priority');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', 'exclude_sitemap');
