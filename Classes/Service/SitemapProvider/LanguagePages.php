@@ -98,6 +98,11 @@ class LanguagePages extends Pages
             if ($record['fe_group'] != 0 || $record['no_search'] != 0) {
                 continue;
             }
+
+            if ($record['exclude_sitemap']) {
+                continue;
+            }
+
             $rootLineList = $GLOBALS['TSFE']->sys_page->getRootLine($record['uid']);
             $addToNode = true;
             foreach ($rootLineList as $rootPage) {
