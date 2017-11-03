@@ -12,6 +12,7 @@ if (!defined('TYPO3_MODE')) {
 \FRUIT\GoogleServices\Service\SitemapProvider::addProvider(\FRUIT\GoogleServices\Service\SitemapProvider\Sitemap::class);
 \FRUIT\GoogleServices\Service\SitemapProvider::addProvider(\FRUIT\GoogleServices\Service\SitemapProvider\LanguagePages::class);
 \FRUIT\GoogleServices\Service\SitemapProvider::addProvider(\FRUIT\GoogleServices\Service\SitemapProvider\FalImages::class);
+\FRUIT\GoogleServices\Service\SitemapProvider::addProvider(\FRUIT\GoogleServices\Service\SitemapProvider\TxNews::class);
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin('FRUIT.google_services', 'piSitemap', [
     'Sitemap' => 'index',
