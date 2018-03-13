@@ -9,7 +9,7 @@ namespace FRUIT\GoogleServices\Service\SitemapProvider;
 
 use FRUIT\GoogleServices\Controller\SitemapController;
 use FRUIT\GoogleServices\Domain\Model\Node;
-use FRUIT\GoogleServices\Domain\Model\Node\Image;
+use FRUIT\GoogleServices\Domain\Model\Node\ImageNode;
 use FRUIT\GoogleServices\Service\SitemapDataService;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -62,7 +62,7 @@ class FalImages extends Pages
                         ->getPublicUrl();
 
                 // Build Node
-                $nodeImage = new Image();
+                $nodeImage = new ImageNode();
                 $nodeImage->setLoc($url);
                 $nodeImage->setTitle($imageReference->getTitle());
                 $nodeImage->setCaption($imageReference->getDescription());
