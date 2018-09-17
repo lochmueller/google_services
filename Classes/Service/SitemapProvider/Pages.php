@@ -96,6 +96,7 @@ class Pages implements SitemapProviderInterface
 
             // Build Node
             $node = new Node();
+            $node->setPid($uid);
             $node->setLoc($url);
             $node->setPriority($this->getPriority($startPage, $record));
             $node->setChangefreq(SitemapDataService::mapTimeout2Period($record['cache_timeout']));
