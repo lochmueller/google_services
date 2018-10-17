@@ -18,10 +18,12 @@ abstract class AbstractXmlView extends TemplateView
 
     /**
      * Render XML Content as single Output
+     * 
+     * @param string $actionName 
      */
-    public function render()
+    public function render($actionName = null)
     {
-        $c = parent::render();
+        $c = parent::render($actionName);
         header("Content-Type:text/xml");
         die($c);
     }
