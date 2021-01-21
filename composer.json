@@ -31,7 +31,6 @@
     "typo3/cms-core": "~7.6.0||~8.7.0||dev-master"
   },
   "replace": {
-    "google_services": "self.version",
     "typo3-ter/google_services": "self.version"
   },
   "homepage": "https://github.com/lochmueller/google_services",
